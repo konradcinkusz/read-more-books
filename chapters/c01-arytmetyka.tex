@@ -1,0 +1,97 @@
+\chapteropen{01}
+
+\begin{cele}
+\item policzyć, ile książek mieści się w roku, znając dzienne minuty czytania i tempo;
+\item zamienić długość książki na godziny i na dzienny budżet czasu;
+\item odczytać z tabeli, ile minut dziennie kosztuje wybrany cel roczny;
+\item wskazać, czego ten rachunek nie mierzy: rozumienia, trudności tekstu i wartości samej liczby.
+\end{cele}
+
+Zanim zaplanujesz czytanie, potrzebujesz jednej liczby: ile książek w ogóle mieści się w roku. Większość ludzi, którzy chcą czytać więcej, wybiera cel na oko, na przykład dwanaście albo dwadzieścia książek, i dopiero po kilku miesiącach orientuje się, że ich dzienny czas na to nie pozwala. Ten rozdział zamienia tę intuicję w rachunek. Nie ma w nim niczego trudniejszego niż mnożenie i dzielenie, ale wymaga uczciwości co do tego, które liczby są założeniami, a które wynikami pomiaru.
+
+\section{Dwa pytania, które warto rozdzielić}
+
+Pytanie \glqq ile książek w roku\grqq{} ma dwie części. Pierwsza jest arytmetyczna: przy danym tempie i danej długości książki, ile czasu lektury mieści się w roku? Druga dotyczy ciebie: ile czasu masz naprawdę, każdego dnia, bez wyjątków? Ten rozdział odpowiada na pierwszą. Drugą podejmie rozdział o skąd wziąć czas.
+
+Rozdzielenie tych pytań ma praktyczny skutek. Jeżeli rachunek pokazuje, że cel dwunastu książek wymaga dziesięciu minut dziennie, a dwudziestu czterech dwudziestu jeden, to możesz podjąć decyzję o celu, nie oceniając siebie. Gdy wynik jest niewygodny, nie musisz od razu wierzyć, że brakuje ci silnej woli. Może brakować minut, i to da się policzyć.
+
+Liczby, na których opiera się cały rachunek, są trzy. Pierwsza to minuty czytania dziennie. Druga to tempo, czyli liczba słów przeczytanych w jednej minucie. Trzecia to długość książki w słowach. Dwie pierwsze są w dużej mierze w twojej gestii. Trzecia zależy od tego, co wybierasz. W tym rozdziale przyjmujemy dla książki wartość \val{typical.words} słów. To założenie robocze, a nie zmierzona cecha wszystkich książek: \verify{typowa książka popularnonaukowa ma w przybliżeniu od kilkudziesięciu do stu kilku tysięcy słów}. Dla tempa przyjmujemy 250 słów na minutę. Także ta liczba jest wyborem, a nie wynikiem badania: \verify{tempo czytania tekstu ciągłego przez dorosłych zwykle mieści się w okolicach 200--300 słów na minutę}. Tabele w tekście pokazują kilka wartości, więc możesz podstawić własne.
+
+\section{Wzór, który warto rozpisać na kartce}
+
+Oznaczmy: $K$ to liczba książek w roku, $m$ to minuty czytania dziennie, $v$ to tempo w słowach na minutę, a $s$ to liczba słów w książce. Wtedy
+\[ K = \frac{m \cdot 365 \cdot v}{s}. \]
+Czynnik $365$ zakłada, że czytasz każdego dnia, także w weekendy. Jeśli tak nie będzie, zamień $365$ na liczbę dni, które naprawdę wypełnisz. Licznik to łączna liczba słów przeczytanych w roku, a mianownik to koszt jednej książki wyrażony w słowach. Iloraz mówi, ile razy się mieszczą.
+
+\begin{przyklad}
+Weźmy $m = 30$, $v = 250$ i $s = \val{typical.words}$. Najpierw minuty w roku: $30 \cdot 365 = 10\,950$. Potem słowa w roku: $10\,950 \cdot 250 = 2\,737\,500$. Na koniec dzielimy przez długość książki: $2\,737\,500 / 80\,000 \approx 34{,}2$. W roku wychodzi więc \val{books.30.250} książki. To nie jest obietnica, tylko wynik arytmetyki dla tych trzech założeń.
+\end{przyklad}
+
+Zauważ, że pierwszy krok, mnożenie minut przez dni, jest zawsze taki sam. Wszystko, co zmienia wynik, siedzi w dwóch ostatnich czynnikach: w tempie i w długości książki. Kiedy ktoś mówi, że \glqq czyta dużo\grqq{}, warto zapytać, które z nich ma na myśli.
+
+\section{Tabela: ten sam wzór w jednym miejscu}
+
+Poniższa tabela liczy wzór dla sześciu wartości minut dziennie i czterech wartości tempa, przy typowej długości książki.
+
+\generated{books-per-year}
+
+Kilka komórek warto przeczytać uważnie. Trzydzieści minut przy 250 słowach na minutę daje \val{books.30.250} książki w roku. Sześćdziesiąt minut przy tym samym tempie daje \val{books.60.250}. Podwojenie czasu podwaja wynik, bo wzór jest liniowy w każdym czynniku. Trzydzieści minut przy 200 słowach na minutę to tylko \val{books.30.200}, a dwadzieścia minut przy 200 słowach na minutę daje \val{books.20.200}. Z kolei dwadzieścia minut przy 200 słowach daje tyle samo słów dziennie co dziesięć minut przy 400, więc w tym modelu liczy się głównie iloczyn minut i tempa, czyli liczba słów dziennie. Dla $m = 20$ i $v = 200$ wychodzi $4000$ słów dziennie, dla $m = 30$ i $v = 250$ wychodzi $7500$.
+
+Druga tabela pokazuje ten sam problem z drugiej strony: jak długa jest książka, którą wybierasz.
+
+\generated{book-lengths}
+
+Książka typowa, przy 250 słowach na minutę, to około \val{typical.hours} godziny czytania. Ta sama dzienna porcja daje zatem w rocznym rachunku inną liczbę książek, zależnie od tego, które książki wybierasz. Przy długości książki dwukrotnie większej wynik spada dwukrotnie. Nie ma w tym nic zaskakującego, ale to właśnie najczęściej pomija się, planując rok z listą tytułów o niejednakowej objętości.
+
+\begin{zasada}
+Wszystkie czynniki wchodzą do wzoru proporcjonalnie. Podwojenie minut albo tempa podwaja liczbę książek. Podwojenie długości książki ją dzieli przez dwa. Nie ma progu, po którym coś się nagle zmienia, i nie ma efektu skali. Jeśli wynik ci nie odpowiada, to jedna z trzech liczb musi się zmienić.
+\end{zasada}
+
+\section{Ile minut dziennie kosztuje cel}
+
+Wzór można odwrócić, bo to wciąż ta sama równość. Na pytanie \glqq ile minut dziennie potrzebuję na $K$ książek?\grqq{} odpowiada
+\[ m = \frac{K \cdot s}{365 \cdot v}. \]
+Dla typowej książki i tempa 250 słów na minutę wartości dla trzech celów rocznych są następujące: dwanaście książek wymaga \val{need.12} minuty dziennie, dwadzieścia cztery wymagają \val{need.24} minut, a pięćdziesiąt dwie, czyli jedną tygodniowo, wymagają \val{need.52} minut dziennie.
+
+Warto zobaczyć, co te wartości mówią razem. Cel pięćdziesięciu dwóch książek wymaga ponad czterokrotności czasu celu dwunastu książek, a nie pięciokrotności. To nie błąd: cel dwunastu książek to rok dwukrotnie słabszy od dwudziestu czterech, ale ten rachunek jest liniowy i nie zostawia miejsca na żadne oszczędności. Każda dodatkowa książka dokłada tyle samo czasu co poprzednia, pod warunkiem że ma tyle samo słów. Jeśli chcesz zmieścić więcej tytułów, musisz wybierać krótsze albo czytać szybciej, o ile to ostatnie nie odbija się na zrozumieniu.
+
+\section{Czego ten rachunek nie mierzy}
+
+Ten rozdział zatrzymuje się celowo w pewnym miejscu. Wzór jest wiarygodny w tym, co mierzy, i niewiarygodny w trzech kwestiach, których nie mierzy.
+
+\textbf{Tempo to nie rozumienie.} Liczba słów na minutę opisuje szybkość przechodzenia przez tekst. Rachunek zakłada, że każde słowo zostało przeczytane i zrozumiane. Nie mówi nic o tym, ile z tego zostaje. Gęsty tekst naukowy przy 250 słowach na minutę może być przeczytany mniej dokładnie niż lekka powieść przy 200. Tempo jest więc miarą strumienia, nie zrozumienia. Rozdział o tempie i uwadze zajmie się tym, co wolno z tą liczbą zrobić, a czego nie.
+
+\textbf{Książki różnią się trudnością.} Wzór nie zna trudności. Traktat z tą samą długością co powieść zajmuje ten sam czas w rachunku, a w rzeczywistości często dłuższy, bo wracasz do zdań, rysujesz, sprawdzasz pojęcia. Dlatego zaplanowany wynik traktuj jako górną granicę dla łatwych książek, a dla trudnych wstaw własne, niższe tempo. Przy połowie tempa wynik jest o połowę mniejszy, i nie ma w tym żadnej tajemnicy.
+
+\textbf{Liczba książek to nie cel.} Kiedy liczba staje się celem, zaczyna wpływać na wybór. Łatwo wtedy czytać krótkie książki, żeby zaliczyć rok, a trudniejsze odkładać, bo kosztują za dużo \glqq punktów\grqq{}. Liczba mówi, ile razy przeszedłeś przez tekst, a nie co z niego wyniosłeś. Jeśli czytanie zaczyna być rejestrowaniem zamiast uwagi, cel jest już źle ustawiony, nawet gdy wskaźnik rośnie.
+
+\begin{uwaga}
+Ten rachunek jest narzędziem planowania. Nie jest oceną ciebie, a tym bardziej oceną ludzi, którzy czytają mniej. Ktoś czytający dwanaście książek z uwagą może mieć z nich więcej niż ktoś, kto skończył pięćdziesiąt, przeglądając je po łebkach.
+\end{uwaga}
+
+\begin{falle}
+Pomyłka: policzyć czas z zegarka zamiast czasu czytania. Ktoś ma trzydzieści minut dziennie w drodze do pracy, ale z tych trzydziestu minut połowę zjadają przystanki, powiadomienia i szukanie miejsca w tekście po przerwie. Wzór mówi o minutach faktycznego czytania. Jeśli realnie czytasz dziesięć z trzydziestu minut, wstaw dziesięć, a nie trzydzieści. Wynik będzie mniejszy, ale za to prawdziwy, i dopiero na nim da się coś zbudować.
+\end{falle}
+
+\section{Zmierz swoje tempo, zanim zaplanujesz rok}
+
+Liczba 250 nie musi być twoja. Najlepiej zmierzyć własną, bo zależy ona od tekstu, języka i tego, jak bardzo się skupiasz. Sposób jest prosty. Wybierz fragment książki, którą czytasz teraz, uruchom stoper na dziesięć minut i czytaj tak, jak zwykle. Następnie policz słowa w przeczytanym fragmencie: najłatwiej policzyć słowa w jednej pełnej linii, pomnożyć przez liczbę pełnych linii na stronie i pomnożyć przez liczbę przeczytanych stron, z zaokrągleniem na korzyść książki, czyli w dół.
+
+\begin{przyklad}
+Przeczytałeś w dziesięć minut około $2400$ słów. Tempo to $2400 / 10 = 240$ słów na minutę. To twoja wartość dla tego tekstu. Jeśli powtórzysz pomiar na innej książce i wyjdzie $180$, nie jest to błąd pomiaru, tylko różnica w tekstach, i warto zapisać obie liczby osobno.
+\end{przyklad}
+
+Pomiar wykonany raz daje jedną próbkę. Dla planowania wystarczy jednak wartość z kilku sesji na różnych książkach, a nie najlepszy wynik z dnia, kiedy byłeś wypoczęty i zaciekawiony. Tempo dla planu ma być takie, jakie zwykle osiągasz, a nie takie, jakie osiągnąłeś raz.
+
+\begin{cwiczenia}
+\exitem{Ile słów przeczytasz w piętnaście minut przy 200 słowach na minutę?}{$15 \cdot 200 = 3000$ słów.}
+\exitem{Ile minut dziennie kosztuje sześć książek typowych przy 250 słowach na minutę?}{$6 \cdot 80\,000 = 480\,000$ słów w roku; $480\,000 / 250 = 1920$ minut czytania; $1920 / 365 \approx 5{,}3$ minuty dziennie.}
+\exitem{Ile książek krótkich, po 40\,000 słów, przeczytasz w roku przy 20 minutach dziennie i 200 słowach na minutę?}{$20 \cdot 365 \cdot 200 / 40\,000 = 36{,}5$ książki. Wynik jest dokładnie połową tego, co dla książek po 80\,000 słów.}
+\exitem{Ile godzin zajmie książka długa, po 120\,000 słów, przy 250 słowach na minutę?}{$120\,000 / 250 = 480$ minut, czyli $8$ godzin.}
+\exitem{Chcesz przeczytać pięćdziesiąt dwie długie książki, po 120\,000 słów każda, przy 250 słowach na minutę. Ile minut dziennie to wymaga?}{$52 \cdot 120\,000 / 250 = 24\,960$ minut w roku; $24\,960 / 365 \approx 68{,}4$ minuty dziennie.}
+\exitem{Przeczytałeś 2400 słów w 10 minut. Jakie jest twoje tempo w słowach na minutę?}{$2400 / 10 = 240$ słów na minutę.}
+\exitem{Zwiększasz tempo z 250 do 300 słów na minutę. O ile procent wzrośnie liczba książek w roku i dlaczego ten wynik może być zawyżony?}{$300 / 250 = 1{,}2$, czyli wzrost o $20$ procent. Wynik jest zawyżony, jeśli wraz z tempem spada zrozumienie, a wzór tego nie uwzględnia. Rachunek mierzy strumień słów, nie to, co z nich zostaje.}
+\exitem{Ile razy więcej minut dziennie wymaga cel pięćdziesięciu dwóch książek niż cel dwunastu, przy tej samej długości książki i tym samym tempie?}{$52 / 12 \approx 4{,}3$ razy. Ponieważ wzór jest liniowy, stosunek celów równa się stosunkowi liczb książek.}
+\end{cwiczenia}
+
+\zadanie{Zmierz swoje tempo na dziesięciu minutach czytania książki, którą masz teraz w rękach, zgodnie z opisem w tym rozdziale. Zapisz liczbę słów, minuty i wynik w słowach na minutę. Następnie oblicz, ile minut dziennie wymaga cel dwunastu książek typowej długości przy tym tempie, i zapisz wynik. Miara sukcesu: masz zapisane trzy liczby z własnego pomiaru i jeden wynik minut dziennie, który możesz zestawić z tym, ile czasu naprawdę masz w ciągu dnia.}
