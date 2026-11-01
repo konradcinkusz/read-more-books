@@ -1,0 +1,77 @@
+\chapter{Tablice}\markboth{Tablice}{Tablice}
+
+Tablice w tym dodatku są generowane z dwóch plików danych (tempo i długości książek)
+przez \code{tools/gen.py}. Zmiana założenia zmienia więc tabelę,
+a nie tylko tekst obok niej.
+
+\section{Wzór}
+Niech $m$ oznacza liczbę minut czytania dziennie, $v$ tempo w słowach na minutę, $w$ długość
+książki w słowach, a $N$ liczbę książek w roku. Wtedy
+\[
+N = \frac{365\,m\,v}{w}
+\qquad\text{oraz}\qquad
+m = \frac{N\,w}{365\,v}.
+\]
+Pierwszy wzór czyta się tak: dzienny czas razy liczba dni daje minuty w roku; minuty razy tempo
+daje słowa w roku; słowa w roku podzielone przez długość książki dają liczbę książek. Sprawdzenie
+dla $m = 10$, $v = 150$ i $w = 80\,000$: $3650 \cdot 150 = 547\,500$ słów, a to dzieli się na
+$80\,000$ z resztą, czyli około $6{,}8$ książki, co zgadza się z tabelą poniżej.
+
+Założenia tej tabeli są następujące:
+\begin{itemize}
+\item typowa książka ma 80\,000 słów, długa 120\,000, krótka 40\,000;
+\item tempo jest stałe, bez przerw, bez cofania się i bez spadku uwagi;
+\item rok ma 365 dni, każdego dnia czytasz, bez wolnych;
+\item nie liczymy czasu na wybór książki, notatki, powroty do wcześniejszych stron ani zmianę książki;
+\item tempo 250 słów na minutę jest założeniem modelu, a nie wynikiem pomiaru.
+\end{itemize}
+Trzy z tych założeń (stałe tempo, czytanie każdego dnia i pominięcie czasu na wybór i notatki)
+w prawdziwym życiu działają w jedną stronę: zawyżają liczbę książek. Tabela jest więc raczej górną
+granicą tego, co arytmetyka pozwala zrobić, a nie prognozą.
+
+\section{Książki w roku}
+Poniższa tabela podaje liczbę typowych książek (80\,000 słów) w roku. Wiersze to minuty czytania
+dziennie, kolumny to tempo w słowach na minutę.
+
+\generated{books-per-year}
+
+\section{Długość książki w godzinach}
+Poniżej czas czytania trzech długości książek przy 250 słowach na minutę. Dla innego tempa
+dziel słowa przez tempo i przelicz na godziny.
+
+\generated{book-lengths}
+
+\section{Jak policzyć własną tablicę}
+Do własnej tablicy potrzebne są dwie liczby: tempo i długość książki. Oba trzeba zmierzyć, a nie
+przyjąć z tabeli.
+
+\subsection*{Krok 1: tempo}
+Weź trzy strony tekstu, który już znasz i który jest mniej więcej tak trudny, jak lektury, które
+planujesz. Policz słowa na stronie: na jednej stronie wystarczy policzyć słowa w kilku wierszach
+i pomnożyć przez liczbę wierszy. Zmierz czas czytania zegarem, bez czytania na głos. Podziel
+słowa przez minuty. Przykład: trzy strony po 300 słów to 900 słów; przeczytane w 4,5 minuty
+dają tempo $900 / 4{,}5 = 200$ słów na minutę. Zmierz tak dwa razy w różnych dniach i weź wynik
+bliższy średniej, a nie najlepszy.
+
+\subsection*{Krok 2: długość książki}
+Strony wydawcy trzeba przeliczyć na słowa, a stosunek słów do stron zależy od czcionki, marginesów
+i tego, czy w książce są rysunki. Zmierz go na jednej stronie tej samej książki, zanim przyjmiesz
+go dla całej.
+
+\subsection*{Krok 3: cel w książkach}
+Zapisz liczbę książek, którą chcesz przeczytać w roku, i przeciętną długość tych, które naprawdę
+planujesz. Nie zapisuj długości z pamięci, bo zwykle pamiętamy krótkie tytuły.
+
+\subsection*{Krok 4: podstawienie}
+Przykład: tempo 200 słów na minutę, cel 20 książek po 60\,000 słów. Wtedy
+\[
+m = \frac{20 \cdot 60\,000}{365 \cdot 200} = \frac{1\,200\,000}{73\,000} \approx 16{,}4
+\]
+minuty dziennie. Przy tempie 250 słów na minutę ta sama liczba książek wymagałaby około
+13 minut dziennie. Różnica w tempie jest tu tak samo ważna jak wybór długości książek.
+
+\begin{falle}
+Najczęstszy błąd to przyjęcie tempa z internetowej tabeli zamiast z własnego pomiaru. Tabela
+mierzy kogoś innego, a licznik pokazuje dokładnie to, co wstawisz. Jeśli wpiszesz cudze tempo,
+dostaniesz cudzy rok.
+\end{falle}
